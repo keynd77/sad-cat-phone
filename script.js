@@ -8,6 +8,14 @@ class MemeMaker {
         this.initializeEventListeners();
     }
     
+    getStoredColor() {
+        return localStorage.getItem('memeMaker_lastColor') || '#ffffff';
+    }
+    
+    setStoredColor(color) {
+        localStorage.setItem('memeMaker_lastColor', color);
+    }
+    
     initializeEventListeners() {
         document.getElementById('addTextBtn').addEventListener('click', () => this.addTextElement());
         document.getElementById('downloadBtn').addEventListener('click', () => this.downloadMeme());
@@ -38,7 +46,7 @@ class MemeMaker {
                     <option value="font-tinos" selected>Tinos</option>
                 </select>
                 <input type="range" class="size-slider" min="12" max="72" value="24" />
-                <input type="color" class="color-picker" value="#000000" />
+                <input type="color" class="color-picker" value="${this.getStoredColor()}" />
                 <button class="delete-btn" onclick="memeMaker.deleteTextElement(this)">×</button>
             </div>
         `;
@@ -78,8 +86,15 @@ class MemeMaker {
             this.changeSize(textElement, e.target.value);
         });
         
-        // Focus on the input
+        // Apply the stored color to the new text element
+        const storedColor = this.getStoredColor();
+        textElement.style.color = storedColor;
         const input = textElement.querySelector('input');
+        if (input) {
+            input.style.color = storedColor;
+        }
+        
+        // Focus on the input
         input.focus();
         input.select();
     }
@@ -184,6 +199,9 @@ class MemeMaker {
     
     changeColor(element, color) {
         console.log('Changing color to:', color); // Debug log
+        
+        // Save the color to localStorage for future text elements
+        this.setStoredColor(color);
         
         // Apply the color to the input element
         const input = element.querySelector('input');
