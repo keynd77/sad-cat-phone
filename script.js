@@ -47,6 +47,7 @@ class MemeMaker {
         // Add font change listener
         const fontSelect = textElement.querySelector('.font-select');
         fontSelect.addEventListener('change', (e) => {
+            console.log('Font changed to:', e.target.value); // Debug log
             this.changeFont(textElement, e.target.value);
         });
         
@@ -104,6 +105,8 @@ class MemeMaker {
     }
     
     changeFont(element, fontClass) {
+        console.log('Changing font to:', fontClass); // Debug log
+        
         // Remove all font classes
         element.classList.remove('font-anton', 'font-bangers', 'font-great-vibes', 'font-tinos');
         // Add the selected font class
@@ -112,8 +115,13 @@ class MemeMaker {
         // Also apply the font to the input element inside
         const input = element.querySelector('input');
         if (input) {
-            input.style.fontFamily = this.getFontFamily(fontClass);
+            const fontFamily = this.getFontFamily(fontClass);
+            input.style.fontFamily = fontFamily;
+            console.log('Applied font family:', fontFamily); // Debug log
         }
+        
+        // Force a reflow to ensure the change is applied
+        element.offsetHeight;
     }
     
     getFontFamily(fontClass) {
