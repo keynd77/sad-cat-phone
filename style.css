@@ -58,6 +58,8 @@ h1 {
     display: block;
     max-width: 100%;
     height: auto;
+    pointer-events: none;
+    user-select: none;
 }
 
 .text-element {
