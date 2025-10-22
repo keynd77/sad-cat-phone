@@ -73,8 +73,14 @@ class MemeMaker {
         // Add font change listener
         const fontSelect = textElement.querySelector('.font-select');
         fontSelect.addEventListener('change', (e) => {
-            console.log('Font changed to:', e.target.value); // Debug log
+            console.log('Font dropdown changed to:', e.target.value); // Debug log
             this.changeFont(textElement, e.target.value);
+        });
+        
+        // Also add click listener to prevent event bubbling
+        fontSelect.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Font dropdown clicked'); // Debug log
         });
         
         // Add color change listener
@@ -82,6 +88,11 @@ class MemeMaker {
         colorPicker.addEventListener('change', (e) => {
             console.log('Color changed to:', e.target.value); // Debug log
             this.changeColor(textElement, e.target.value);
+        });
+        
+        // Prevent event bubbling for color picker
+        colorPicker.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
         
         
@@ -102,8 +113,13 @@ class MemeMaker {
         const input = element.querySelector('input');
         
         element.addEventListener('mousedown', (e) => {
-            if (e.target === input) {
-                // If clicking on input, just select the element
+            // Don't start dragging if clicking on controls (dropdown, color picker, buttons)
+            if (e.target === input || 
+                e.target.classList.contains('font-select') || 
+                e.target.classList.contains('color-picker') || 
+                e.target.classList.contains('size-btn') || 
+                e.target.classList.contains('delete-btn')) {
+                // If clicking on input or controls, just select the element
                 this.selectElement(element);
                 return;
             }
