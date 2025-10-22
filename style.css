@@ -38,10 +38,10 @@ h1 {
 }
 
 .meme-editor {
-    background-color: #3a4a3a;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
 }
 
 .meme-canvas {
@@ -277,7 +277,7 @@ h1 {
     }
     
     .meme-editor {
-        padding: 15px;
+        padding: 0;
     }
     
     .text-element {
@@ -325,7 +325,7 @@ h1 {
     }
     
     .meme-editor {
-        padding: 10px;
+        padding: 0;
     }
     
     .text-element {
