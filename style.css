@@ -126,6 +126,16 @@ h1 {
     background-color: white;
 }
 
+.color-picker {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+}
+
 .delete-btn {
     background-color: #ff4757;
     color: white;

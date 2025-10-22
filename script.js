@@ -37,6 +37,7 @@ class MemeMaker {
                     <option value="font-great-vibes">Great Vibes</option>
                     <option value="font-tinos" selected>Tinos</option>
                 </select>
+                <input type="color" class="color-picker" value="#000000" />
                 <button class="delete-btn" onclick="memeMaker.deleteTextElement(this)">×</button>
             </div>
         `;
@@ -60,6 +61,13 @@ class MemeMaker {
         fontSelect.addEventListener('change', (e) => {
             console.log('Font changed to:', e.target.value); // Debug log
             this.changeFont(textElement, e.target.value);
+        });
+        
+        // Add color change listener
+        const colorPicker = textElement.querySelector('.color-picker');
+        colorPicker.addEventListener('change', (e) => {
+            console.log('Color changed to:', e.target.value); // Debug log
+            this.changeColor(textElement, e.target.value);
         });
         
         // Focus on the input
@@ -157,6 +165,19 @@ class MemeMaker {
         
         // Force a reflow to ensure the change is applied
         element.offsetHeight;
+    }
+    
+    changeColor(element, color) {
+        console.log('Changing color to:', color); // Debug log
+        
+        // Apply the color to the input element
+        const input = element.querySelector('input');
+        if (input) {
+            input.style.color = color;
+        }
+        
+        // Also apply to the text element itself
+        element.style.color = color;
     }
     
     getFontFamily(fontClass) {
