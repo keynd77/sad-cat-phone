@@ -34,11 +34,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Great+Vibes&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="config.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>it was a sad day for cat</h1>
-        <p class="subtitle">CA: comming soon</p>
+        <p class="subtitle">CA: <span id="contractAddress">loading...</span></p>
         
         <div class="meme-editor">
             <div class="meme-canvas" id="memeCanvas">
@@ -54,5 +55,14 @@
     </div>
     
     <script src="script.js"></script>
+    <script>
+        // Load contract address from config
+        document.addEventListener('DOMContentLoaded', () => {
+            const contractAddressElement = document.getElementById('contractAddress');
+            if (contractAddressElement && window.CONFIG) {
+                contractAddressElement.textContent = window.CONFIG.contractAddress;
+            }
+        });
+    </script>
 </body>
 </html>
