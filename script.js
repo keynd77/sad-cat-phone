@@ -328,12 +328,48 @@ class MemeMaker {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'meme.png';
+            
+            // Generate filename based on text content
+            const filename = this.generateFilename();
+            a.download = filename;
+            
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }, 'image/png');
+    }
+    
+    generateFilename() {
+        if (this.textElements.length === 0) {
+            return 'sadCat_meme.png';
+        }
+        
+        // Get all text content from text elements
+        const allText = this.textElements.map(element => {
+            const input = element.querySelector('input');
+            return input ? input.value.trim() : '';
+        }).filter(text => text.length > 0);
+        
+        if (allText.length === 0) {
+            return 'sadCat_meme.png';
+        }
+        
+        // Use the first text element's content
+        const firstText = allText[0];
+        
+        // Clean the text for filename (remove special characters, limit length)
+        const cleanText = firstText
+            .replace(/[^a-zA-Z0-9\s]/g, '') // Remove special characters
+            .replace(/\s+/g, '_') // Replace spaces with underscores
+            .toLowerCase()
+            .substring(0, 20); // Limit to 20 characters
+        
+        // Get first 3 words or use the cleaned text
+        const words = cleanText.split('_').slice(0, 3);
+        const filenameText = words.join('_');
+        
+        return `sadCat_${filenameText}.png`;
     }
 }
 

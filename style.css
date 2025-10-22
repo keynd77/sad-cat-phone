@@ -206,31 +206,37 @@ h1 {
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    border: none;
+    border: 2px solid #000000;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Tinos', serif;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 #addTextBtn {
-    background-color: #28a745;
-    color: white;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 #addTextBtn:hover {
-    background-color: #218838;
+    background-color: #ffffff;
+    color: #000000;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .download-btn {
-    background-color: #007bff;
-    color: white;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .download-btn:hover {
-    background-color: #0056b3;
+    background-color: #000000;
+    color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Font classes - these are now handled by JavaScript inline styles */
@@ -256,25 +262,79 @@ h1 {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
     h1 {
         font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
     }
     
     .meme-editor {
-        padding: 20px;
+        padding: 15px;
     }
     
     .text-element {
         font-size: 18px;
         min-width: 80px;
+        padding: 3px 8px;
     }
     
     .controls {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
     
     .btn {
-        width: 200px;
+        width: 100%;
+        max-width: 300px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .text-controls {
+        gap: 8px;
+    }
+    
+    .font-select, .color-picker, .delete-btn {
+        font-size: 11px;
+        padding: 2px 4px;
+    }
+    
+    .size-btn {
+        width: 14px;
+        height: 10px;
+        font-size: 7px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .meme-editor {
+        padding: 10px;
+    }
+    
+    .text-element {
+        font-size: 16px;
+        min-width: 60px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 13px;
     }
 }
