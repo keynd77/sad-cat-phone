@@ -126,33 +126,40 @@ h1 {
     background-color: white;
 }
 
-.size-slider {
-    width: 60px;
-    height: 20px;
-    cursor: pointer;
-    background: #ddd;
-    border-radius: 10px;
-    outline: none;
-    -webkit-appearance: none;
+.text-input-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.size-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #007bff;
-    border-radius: 50%;
-    cursor: pointer;
+.size-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.size-slider::-moz-range-thumb {
+.size-btn {
     width: 16px;
-    height: 16px;
-    background: #007bff;
-    border-radius: 50%;
+    height: 12px;
+    border: 1px solid #ccc;
+    background-color: white;
     cursor: pointer;
-    border: none;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    padding: 0;
+    line-height: 1;
+}
+
+.size-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #007bff;
+}
+
+.size-btn:active {
+    background-color: #e0e0e0;
 }
 
 .color-picker {

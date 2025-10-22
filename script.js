@@ -37,7 +37,13 @@ class MemeMaker {
         const textElement = document.createElement('div');
         textElement.className = 'text-element';
         textElement.innerHTML = `
-            <input type="text" value="Your text here" />
+            <div class="text-input-container">
+                <input type="text" value="Your text here" />
+                <div class="size-controls">
+                    <button class="size-btn size-up" onclick="memeMaker.changeSizeBy(this, 2)">▲</button>
+                    <button class="size-btn size-down" onclick="memeMaker.changeSizeBy(this, -2)">▼</button>
+                </div>
+            </div>
             <div class="text-controls">
                 <select class="font-select">
                     <option value="font-anton">Anton</option>
@@ -45,7 +51,6 @@ class MemeMaker {
                     <option value="font-great-vibes">Great Vibes</option>
                     <option value="font-tinos" selected>Tinos</option>
                 </select>
-                <input type="range" class="size-slider" min="12" max="72" value="24" />
                 <input type="color" class="color-picker" value="${this.getStoredColor()}" />
                 <button class="delete-btn" onclick="memeMaker.deleteTextElement(this)">×</button>
             </div>
@@ -79,12 +84,6 @@ class MemeMaker {
             this.changeColor(textElement, e.target.value);
         });
         
-        // Add size change listener
-        const sizeSlider = textElement.querySelector('.size-slider');
-        sizeSlider.addEventListener('input', (e) => {
-            console.log('Size changed to:', e.target.value); // Debug log
-            this.changeSize(textElement, e.target.value);
-        });
         
         // Apply the stored color to the new text element
         const storedColor = this.getStoredColor();
@@ -224,6 +223,15 @@ class MemeMaker {
         if (input) {
             input.style.fontSize = size + 'px';
         }
+    }
+    
+    changeSizeBy(button, increment) {
+        const textElement = button.closest('.text-element');
+        const currentSize = parseInt(textElement.style.fontSize) || 24;
+        const newSize = Math.max(12, Math.min(72, currentSize + increment));
+        
+        console.log('Changing size by:', increment, 'from', currentSize, 'to', newSize);
+        this.changeSize(textElement, newSize);
     }
     
     getFontFamily(fontClass) {
