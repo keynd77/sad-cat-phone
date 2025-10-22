@@ -120,6 +120,15 @@ h1 {
     opacity: 1;
 }
 
+.text-element .size-controls {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.text-element.selected .size-controls {
+    opacity: 1;
+}
+
 .font-select {
     padding: 2px 5px;
     border: 1px solid #ccc;
