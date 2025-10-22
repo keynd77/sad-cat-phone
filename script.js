@@ -61,11 +61,14 @@ class MemeMaker {
         const input = element.querySelector('input');
         
         element.addEventListener('mousedown', (e) => {
-            if (e.target === input) return; // Don't drag when clicking on input
+            if (e.target === input) {
+                // If clicking on input, just select the element
+                this.selectElement(element);
+                return;
+            }
             
             this.isDragging = true;
-            this.selectedElement = element;
-            element.classList.add('selected');
+            this.selectElement(element);
             
             const rect = element.getBoundingClientRect();
             this.dragOffset.x = e.clientX - rect.left;
@@ -97,11 +100,37 @@ class MemeMaker {
         
         document.addEventListener('mouseup', () => {
             this.isDragging = false;
-            if (this.selectedElement) {
-                this.selectedElement.classList.remove('selected');
-                this.selectedElement = null;
+            // Don't deselect immediately - let user click elsewhere to deselect
+        });
+        
+        // Add click listener to canvas to deselect when clicking elsewhere
+        document.getElementById('memeCanvas').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('memeCanvas')) {
+                this.deselectAll();
             }
         });
+    }
+    
+    selectElement(element) {
+        // Deselect all other elements first
+        this.deselectAll();
+        
+        // Select this element
+        element.classList.add('selected');
+        this.selectedElement = element;
+        
+        // Focus the input for editing
+        const input = element.querySelector('input');
+        if (input) {
+            input.focus();
+        }
+    }
+    
+    deselectAll() {
+        this.textElements.forEach(element => {
+            element.classList.remove('selected');
+        });
+        this.selectedElement = null;
     }
     
     changeFont(element, fontClass) {

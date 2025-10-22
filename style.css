@@ -65,8 +65,8 @@ h1 {
     cursor: move;
     user-select: none;
     padding: 5px 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #007bff;
+    background-color: transparent;
+    border: none;
     border-radius: 5px;
     min-width: 100px;
     font-size: 24px;
@@ -77,13 +77,18 @@ h1 {
 }
 
 .text-element:hover {
-    border-color: #0056b3;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px dashed #007bff;
 }
 
 .text-element.selected {
-    border-color: #ff6b6b;
-    background-color: rgba(255, 107, 107, 0.2);
+    border: 2px solid #007bff;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.text-element.selected:hover {
+    border-color: #0056b3;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .text-element input {
