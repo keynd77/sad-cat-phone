@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Great+Vibes&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Meme Maker</h1>
+        
+        <div class="meme-editor">
+            <div class="meme-canvas" id="memeCanvas">
+                <img src="images/base-meme.png" alt="Base Meme" id="baseImage">
+                <!-- Text elements will be added here dynamically -->
+            </div>
+            
+            <div class="controls">
+                <button id="addTextBtn" class="btn">Add Text</button>
+                <button id="downloadBtn" class="btn download-btn">Download Meme</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
