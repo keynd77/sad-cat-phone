@@ -37,13 +37,11 @@ class MemeMaker {
         const textElement = document.createElement('div');
         textElement.className = 'text-element';
         textElement.innerHTML = `
-            <div class="text-input-container">
-                <input type="text" value="Your text here" />
-                <div class="size-controls">
-                    <button class="size-btn size-up" onclick="memeMaker.changeSizeBy(this, 2)">▲</button>
-                    <button class="size-btn size-down" onclick="memeMaker.changeSizeBy(this, -2)">▼</button>
-                </div>
+            <div class="size-controls">
+                <button class="size-btn size-up" onclick="memeMaker.changeSizeBy(this, 2)">▲</button>
+                <button class="size-btn size-down" onclick="memeMaker.changeSizeBy(this, -2)">▼</button>
             </div>
+            <input type="text" value="Your text here" />
             <div class="text-controls">
                 <select class="font-select">
                     <option value="font-anton">Anton</option>
