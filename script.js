@@ -37,6 +37,7 @@ class MemeMaker {
                     <option value="font-great-vibes">Great Vibes</option>
                     <option value="font-tinos" selected>Tinos</option>
                 </select>
+                <input type="range" class="size-slider" min="12" max="72" value="24" />
                 <input type="color" class="color-picker" value="#000000" />
                 <button class="delete-btn" onclick="memeMaker.deleteTextElement(this)">×</button>
             </div>
@@ -68,6 +69,13 @@ class MemeMaker {
         colorPicker.addEventListener('change', (e) => {
             console.log('Color changed to:', e.target.value); // Debug log
             this.changeColor(textElement, e.target.value);
+        });
+        
+        // Add size change listener
+        const sizeSlider = textElement.querySelector('.size-slider');
+        sizeSlider.addEventListener('input', (e) => {
+            console.log('Size changed to:', e.target.value); // Debug log
+            this.changeSize(textElement, e.target.value);
         });
         
         // Focus on the input
@@ -185,6 +193,19 @@ class MemeMaker {
         
         // Also apply to the text element itself
         element.style.color = color;
+    }
+    
+    changeSize(element, size) {
+        console.log('Changing size to:', size); // Debug log
+        
+        // Apply the size to the text element
+        element.style.fontSize = size + 'px';
+        
+        // Also apply to the input element inside
+        const input = element.querySelector('input');
+        if (input) {
+            input.style.fontSize = size + 'px';
+        }
     }
     
     getFontFamily(fontClass) {

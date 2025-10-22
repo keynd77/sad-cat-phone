@@ -126,6 +126,35 @@ h1 {
     background-color: white;
 }
 
+.size-slider {
+    width: 60px;
+    height: 20px;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 10px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.size-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
 .color-picker {
     width: 20px;
     height: 20px;
