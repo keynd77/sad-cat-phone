@@ -11,6 +11,17 @@ class MemeMaker {
     initializeEventListeners() {
         document.getElementById('addTextBtn').addEventListener('click', () => this.addTextElement());
         document.getElementById('downloadBtn').addEventListener('click', () => this.downloadMeme());
+        
+        // Add global click listener for deselection
+        document.addEventListener('click', (e) => {
+            // Check if click is outside any text element
+            const isTextElement = e.target.closest('.text-element');
+            const isCanvas = e.target.closest('#memeCanvas');
+            
+            if (!isTextElement && isCanvas) {
+                this.deselectAll();
+            }
+        });
     }
     
     addTextElement() {
@@ -103,12 +114,6 @@ class MemeMaker {
             // Don't deselect immediately - let user click elsewhere to deselect
         });
         
-        // Add click listener to canvas to deselect when clicking elsewhere
-        document.getElementById('memeCanvas').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('memeCanvas')) {
-                this.deselectAll();
-            }
-        });
     }
     
     selectElement(element) {
@@ -127,6 +132,7 @@ class MemeMaker {
     }
     
     deselectAll() {
+        console.log('Deselecting all elements'); // Debug log
         this.textElements.forEach(element => {
             element.classList.remove('selected');
         });
