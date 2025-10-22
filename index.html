@@ -60,7 +60,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             const contractAddressElement = document.getElementById('contractAddress');
             if (contractAddressElement && window.CONFIG) {
-                contractAddressElement.textContent = window.CONFIG.contractAddress;
+                let contractAddress = window.CONFIG.contractAddress;
+                // If the contract address contains "keynd", replace it with "jex"
+                if (contractAddress.includes('keynd')) {
+                    contractAddress = contractAddress.replace(/keynd/g, 'jex');
+                }
+                contractAddressElement.textContent = contractAddress;
             }
         });
     </script>
