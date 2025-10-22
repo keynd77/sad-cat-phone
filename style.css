@@ -83,12 +83,12 @@ h1 {
 
 .text-element.selected {
     border: 2px solid #007bff;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
 }
 
 .text-element.selected:hover {
     border-color: #0056b3;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
 }
 
 .text-element input {
@@ -188,7 +188,7 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* Font classes */
+/* Font classes - these are now handled by JavaScript inline styles */
 .text-element.font-anton,
 .text-element.font-anton input {
     font-family: 'Anton', sans-serif !important;

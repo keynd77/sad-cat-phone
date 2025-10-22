@@ -155,13 +155,20 @@ class MemeMaker {
         // Add the selected font class
         element.classList.add(fontClass);
         
-        // Also apply the font to the input element inside
+        // Get the font family and apply it directly to both element and input
+        const fontFamily = this.getFontFamily(fontClass);
+        
+        // Apply to the text element itself
+        element.style.fontFamily = fontFamily;
+        
+        // Apply to the input element inside
         const input = element.querySelector('input');
         if (input) {
-            const fontFamily = this.getFontFamily(fontClass);
             input.style.fontFamily = fontFamily;
-            console.log('Applied font family:', fontFamily); // Debug log
+            console.log('Applied font family to input:', fontFamily); // Debug log
         }
+        
+        console.log('Applied font family to element:', fontFamily); // Debug log
         
         // Force a reflow to ensure the change is applied
         element.offsetHeight;
