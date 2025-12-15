@@ -20,11 +20,21 @@ body {
     width: 100%;
 }
 
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 h1 {
     color: #ffffff;
     font-family: 'Bangers', cursive;
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -267,7 +277,8 @@ h1 {
     }
     
     h1 {
-        font-size: 2rem;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
         margin-bottom: 20px;
     }
     
@@ -317,7 +328,8 @@ h1 {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
     }
     
     .subtitle {
