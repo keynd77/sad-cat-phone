@@ -61,10 +61,12 @@
             const contractAddressElement = document.getElementById('contractAddress');
             if (contractAddressElement && window.CONFIG) {
                 let contractAddress = window.CONFIG.contractAddress;
+                
                 // If the contract address contains "keynd", replace it with "jex"
                 if (contractAddress.includes('keynd')) {
                     contractAddress = contractAddress.replace(/keynd/g, 'jex');
                 }
+                
                 contractAddressElement.textContent = contractAddress;
             }
         });
